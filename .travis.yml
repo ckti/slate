@@ -124,7 +124,6 @@ jobs:
         OSX_SDK=10.11
         GOAL="deploy"
         BITCOIN_CONFIG="--enable-gui --enable-reduce-exports"
-
 # lint stage
      - stage: lint
        env:
