@@ -124,16 +124,17 @@ jobs:
         OSX_SDK=10.11
         GOAL="deploy"
         BITCOIN_CONFIG="--enable-gui --enable-reduce-exports"
-    - stage: lint
-      env:
-      sudo: false
-      cache: false
-      language: python
-      python: '3.6'
-      install:
-        - travis_retry pip install flake8
-      before_script:
-        - git fetch --unshallow
-      script:
-        - test/lint/logprint-scanner.py
-        - test/lint/lint-all.sh
+
+# lint stage
+     - stage: lint
+       env:
+       sudo: false
+       cache: false
+       language: python
+       python: '3.6'
+       install:
+         - set -o errexit; source .travis/lint_04_install.sh
+       before_script:
+         - set -o errexit; source .travis/lint_05_before_script.sh
+       script:
+         - set -o errexit; source .travis/lint_06_script.sh
